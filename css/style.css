@@ -1,0 +1,170 @@
+/* Color Palette & Custom Typography System Variables */
+:root {
+    --color-primary: #054A3A;      /* Emerald Green Theme Color */
+    --color-accent: #E5A93C;       /* Warm Ceylon Gold Accent Accent */
+    --color-dark: #03211A;         /* Rich Dark Obsidian Green background */
+    --color-muted-bg: #F4F7F6;     /* Super clean light grey backdrop */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    color: #333d3b;
+    overflow-x: hidden;
+    background-color: #ffffff;
+}
+
+.header-font {
+    font-family: var(--font-heading);
+}
+
+/* Structural Spacing Utilities */
+.py-6 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+.tracking-wider {
+    letter-spacing: 1.5px;
+}
+
+/* Themed Theme Utility Button Adjustments */
+.btn-theme {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    border-radius: 50px;
+    padding: 10px 28px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.btn-theme:hover {
+    background-color: var(--color-dark);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.btn-accent {
+    background-color: var(--color-accent);
+    color: var(--color-dark);
+    border-radius: 50px;
+    padding: 10px 24px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.btn-accent:hover {
+    background-color: #d1952e;
+    transform: translateY(-2px);
+}
+
+.btn-outline-theme {
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    font-weight: 600;
+}
+.btn-outline-theme:hover {
+    background-color: var(--color-primary);
+    color: #ffffff;
+}
+
+/* Background Utility Alternations */
+.bg-theme-dark { background-color: var(--color-dark) !important; }
+.text-accent { color: var(--color-accent) !important; }
+.text-theme { color: var(--color-primary); }
+.bg-theme { background-color: var(--color-primary) !important; }
+.bg-light { background-color: var(--color-muted-bg) !important; }
+
+/* 1. Navbar Adjustments */
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 500;
+}
+.navbar-dark .navbar-nav .nav-link.active, 
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: var(--color-accent);
+}
+
+/* 2. Hero Component */
+.hero-slider-section .item {
+    position: relative;
+    height: 80vh;
+    max-height: 780px;
+    min-height: 500px;
+}
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.hero-overlay-text {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(3,33,26,0.3), rgba(3,33,26,0.7));
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+}
+.hero-overlay-text h1 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+/* 3. About Us Framed Adjustments */
+.image-accent-frame::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--color-accent);
+    top: 20px;
+    left: -20px;
+    z-index: 0;
+    border-radius: 1rem;
+}
+.main-about-img {
+    position: relative;
+    z-index: 1;
+}
+
+/* 4. Enhanced Tour Packages Slider Cards */
+.pkg-card {
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    background: #ffffff;
+}
+.pkg-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(5,74,58,0.12) !important;
+}
+.pkg-img {
+    height: 230px;
+    object-fit: cover;
+}
+
+/* 5. Destination Grids Card Layout */
+.destination-card {
+    height: 320px;
+    cursor: pointer;
+}
+.destination-card img {
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.destination-card:hover img {
+    transform: scale(1.08);
+}
+.destination-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(3,33,26,0.85), rgba(3,33,26,0.1));
+    transition: opacity 0.3s ease;
+}
+
+/* 6. Comprehensive Advanced Footer Menu Modifiers */
+.footer-menu li a {
+    transition: color 0.2s ease, padding-left 0.2s ease;
+    display: inline-block;
+}
+.footer-menu li a:hover {
+    color: var(--color-accent) !important;
+    padding-left: 4px;
+}
