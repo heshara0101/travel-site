@@ -1,6 +1,11 @@
 <?php include 'includes/header.php'; ?>
 <?php include 'includes/sidebar.php'; ?>
 
+<?php
+require_once "config/Database.php";
+require_once "classes/Slider.php";
+?>
+
 <div class="main-content">
     <?php include 'includes/topbar.php'; ?>
 
@@ -30,14 +35,6 @@
                     <label style="width: 150px; text-align: right; padding-right: 25px; font-weight: 500; color: #555; font-size: 14px;">Title</label>
                     <div style="flex: 1;">
                         <input type="text" name="title" placeholder="Enter Main Headline Title" style="width: 100%; border: none; border-bottom: 1px solid #00a8ff; padding: 8px 0; outline: none; font-size: 14px;">
-                    </div>
-                </div>
-
-                <!-- Button Text / Link Row -->
-                <div class="form-group-row" style="display: flex; align-items: center; margin-bottom: 20px;">
-                    <label style="width: 150px; text-align: right; padding-right: 25px; font-weight: 500; color: #555; font-size: 14px;">Button Link</label>
-                    <div style="flex: 1;">
-                        <input type="text" name="btn_link" placeholder="Enter Link URL (e.g. packages.php)" style="width: 100%; border: none; border-bottom: 1px solid #ccc; padding: 8px 0; outline: none; font-size: 14px;">
                     </div>
                 </div>
 
