@@ -87,6 +87,30 @@ $destinations = [
     ['name' => 'Ella', 'subtitle' => 'Mountain View Paradise', 'image' => 'assets/images/ella.jpg'],
     ['name' => 'Sigiriya', 'subtitle' => 'Ancient Rock Fortress', 'image' => 'assets/images/sigiriya.jpg']
 ];
+
+// Services Data (Matches create-service.php fields)
+$services = [
+    [
+        'image' => 'assets/images/service1.jpg', // path to image
+        'title' => 'Custom Tour Itineraries',
+        'short_desc' => 'Bespoke holiday plans designed specifically around your interests, timeline, and travel budget.'
+    ],
+    [
+        'image' => 'assets/images/service2.jpg',
+        'title' => 'Private Transport & Drivers',
+        'short_desc' => 'Air-conditioned luxury vehicles equipped with licensed, English-speaking chauffeur guides.'
+    ],
+    [
+        'image' => 'assets/images/service3.jpg',
+        'title' => 'Boutique Hotel Reservations',
+        'short_desc' => 'Exclusive rates and handpicked luxury resorts, eco-lodges, and heritage villas across the island.'
+    ],
+    [
+        'image' => 'assets/images/service4.jpg',
+        'title' => '24/7 Airport Transfers',
+        'short_desc' => 'Punctual, stress-free pick-up and drop-off services from Colombo Bandaranaike International Airport.'
+    ]
+];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -127,6 +151,7 @@ $destinations = [
                     <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
                     <li class="nav-item"><a class="nav-link" href="#packages">Tour Packages</a></li>
                     <li class="nav-item"><a class="nav-link" href="#destinations">Destinations</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
                 </ul>
                 <a href="bookAtrip.php" class="btn btn-accent ms-lg-3 d-none d-lg-inline-block">Book a Trip</a>
@@ -250,6 +275,35 @@ $destinations = [
                             <div class="destination-overlay d-flex flex-column align-items-center justify-content-center">
                                 <h3 class="text-white fw-bold mb-1"><?php echo htmlspecialchars($dest['name']); ?></h3>
                                 <span class="text-accent text-uppercase small tracking-wider"><?php echo htmlspecialchars($dest['subtitle']); ?></span>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-6 bg-light section-padding">
+        <div class="container">
+            <div class="text-center max-w-2xl mx-auto mb-5">
+                <span class="text-accent text-uppercase fw-bold tracking-wider d-block mb-2">What We Offer</span>
+                <h2 class="display-5 fw-bold text-theme header-font">Our Travel Services</h2>
+                <p class="text-muted">Comprehensive destination management solutions to ensure your Sri Lankan journey is seamless and memorable.</p>
+            </div>
+            
+            <div class="row g-4">
+                <?php foreach ($services as $service): ?>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card service-card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+                            <div class="position-relative overflow-hidden" style="height: 190px;">
+                                <img src="<?php echo htmlspecialchars($service['image']); ?>" 
+                                     alt="<?php echo htmlspecialchars($service['title']); ?>" 
+                                     class="w-100 h-100 object-fit-cover"
+                                     onerror="this.src='https://placehold.co/400x250?text=Service+Image'">
+                            </div>
+                            <div class="card-body p-4 text-center">
+                                <h5 class="fw-bold text-theme mb-2"><?php echo htmlspecialchars($service['title']); ?></h5>
+                                <p class="card-text text-muted small mb-0"><?php echo htmlspecialchars($service['short_desc']); ?></p>
                             </div>
                         </div>
                     </div>

@@ -10,23 +10,23 @@
         <p>Administrator</p>
         <div class="profile-actions">
             <a href="profile.php"><i class="fa-regular fa-user"></i></a>
-            <a href="#"><i class="fa-solid fa-gauge"></i></a>
-            <a href="#"><i class="fa-regular fa-comment"></i></a>
+            <a href="index.php"><i class="fa-solid fa-gauge"></i></a>
+            <a href="messages.php "><i class="fa-regular fa-comment"></i></a>
             <a href="login.php"><i class="fa-solid fa-right-from-bracket"></i></a>
         </div>
     </div>
 
     <nav class="sidebar-nav">
         <ul>
-            <li class="active"><a href="index.php"><i class="fa-solid fa-gauge"></i> Dashboard</a></li>
-            <li><a href="slider.php"><i class="fa-regular fa-images"></i> Slider</a></li>
-            <li><a href="banner.php"><i class="fa-regular fa-flag"></i> Banners</a></li>
-            <li><a href="../index.php"><i class="fa-regular fa-file"></i> Pages</a></li>
-            
+            <li><a href="index.php">Dashboard<i class="fa-solid fa-gauge"></i> </a></li>
+            <li><a href="slider.php">Slider<i class="fa-regular fa-images"></i> </a></li>
+            <li><a href="banner.php">Banners<i class="fa-regular fa-flag"></i> </a></li>
+            <li><a href="../index.php">Pages<i class="fa-regular fa-file"></i> </a></li>
+
             <!-- Dropdown Menu Item -->
             <li class="has-submenu">
                 <a href="#" class="submenu-toggle">
-                    <span><i class="fa-regular fa-square-check"></i> Services</span>
+                    <span> Services</span>
                     <i class="fa-solid fa-plus toggle-icon"></i>
                 </a>
                 <ul class="submenu">
@@ -37,7 +37,7 @@
 
             <li class="has-submenu">
                 <a href="#" class="submenu-toggle">
-                    <span><i class="fa-solid fa-chart-line"></i> Tour Packages</span>
+                    <span> Tour Packages</span>
                     <i class="fa-solid fa-plus toggle-icon"></i>
                 </a>
                 <ul class="submenu">
