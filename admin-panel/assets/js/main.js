@@ -48,17 +48,43 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // 4. Dark/Light Mode Switcher Logic (Global scope for inline onclick handler)
-function toggleTheme() {
-    document.body.classList.toggle('dark-mode');
+// Helper function to update UI elements and HTML body class
+function applyTheme(isDark) {
     const themeIcon = document.getElementById('themeIcon');
-    
-    if (themeIcon) {
-        if (document.body.classList.contains('dark-mode')) {
+    const themeText = document.getElementById('themeText');
+
+    if (isDark) {
+        document.body.classList.add('dark-mode');
+        if (themeIcon) {
             themeIcon.className = 'fa-solid fa-sun';
-            themeIcon.style.color = '#ffa500';
-        } else {
+            themeIcon.style.color = '#f1c40f'; // Sun Yellow
+        }
+        if (themeText) {
+            themeText.textContent = 'Light Mode';
+        }
+    } else {
+        document.body.classList.remove('dark-mode');
+        if (themeIcon) {
             themeIcon.className = 'fa-solid fa-moon';
-            themeIcon.style.color = '#70a1ff';
+            themeIcon.style.color = '#70a1ff'; // Moon Blue
+        }
+        if (themeText) {
+            themeText.textContent = 'Dark Mode';
         }
     }
 }
+
+// Toggle function triggered on click
+function toggleTheme() {
+    const isDark = !document.body.classList.contains('dark-mode');
+    localStorage.setItem('admin_theme', isDark ? 'dark' : 'light');
+    applyTheme(isDark);
+}
+
+// Automatically apply saved theme when page loads
+document.addEventListener('DOMContentLoaded', function () {
+    const savedTheme = localStorage.getItem('admin_theme');
+    if (savedTheme === 'dark') {
+        applyTheme(true);
+    }
+});

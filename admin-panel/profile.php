@@ -32,13 +32,13 @@ $ADMIN = new admin(1);
                     <div style="flex: 1; display: flex; align-items: center; gap: 20px;">
                         <?php 
                         // Image path from folder structure where images are uploaded
-                        $imgPath = !empty($ADMIN->profile_img) ? 'assets/ajax/js/php/images/' . $ADMIN->profile_img : 'assets/images/placeholder.jpg'; 
+                        $imgPath = !empty($ADMIN->profile_img) ? 'assets/classesimages/' . $ADMIN->profile_img : 'assets/images/placeholder.png'; 
                         ?>
                         <img src="<?= $imgPath; ?>" alt="Admin Avatar" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid #00a8ff;" onerror="this.src='https://via.placeholder.com/150?text=Admin'">
                         
                         <div style="display: flex; align-items: center; gap: 10px;">
-                            <label for="profile_img" style="background: #20c997; color: #fff; padding: 6px 18px; border-radius: 3px; font-size: 12px; font-weight: 600; cursor: pointer; text-transform: uppercase;">BROWSE</label>
-                            <input type="file" id="profile_img" name="profile_picture" style="display: none;" onchange="document.getElementById('file-name').innerText = this.files[0] ? this.files[0].name : 'No file selected.'">
+                            <label for="profile_picture" style="background: #20c997; color: #fff; padding: 6px 18px; border-radius: 3px; font-size: 12px; font-weight: 600; cursor: pointer; text-transform: uppercase;">BROWSE</label>
+                            <input type="file" id="profile_picture" name="profile_picture" style="display: none;" onchange="document.getElementById('file-name').innerText = this.files[0] ? this.files[0].name : 'No file selected.'">
                             <span id="file-name" style="font-size: 13px; color: #777;">No file selected.</span>
                         </div>
                     </div>
@@ -106,6 +106,7 @@ $ADMIN = new admin(1);
 jQuery(document).ready(function ($) {
     $("#profile-data").on("submit", function (e) {
         e.preventDefault();
+        
 
         var formData = new FormData(this);
 

@@ -11,7 +11,7 @@
         <div class="profile-actions">
             <a href="profile.php"><i class="fa-regular fa-user"></i></a>
             <a href="index.php"><i class="fa-solid fa-gauge"></i></a>
-            <a href="messages.php "><i class="fa-regular fa-comment"></i></a>
+            <a href="message.php "><i class="fa-regular fa-comment"></i></a>
             <a href="login.php"><i class="fa-solid fa-right-from-bracket"></i></a>
         </div>
     </div>

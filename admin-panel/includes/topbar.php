@@ -1,9 +1,16 @@
+<?php
+require_once "assets/classes/Database.php";
+require_once "assets/classes/message.php";
+
+$MSG_COUNT_OBJ = new message();
+$total_messages = $MSG_COUNT_OBJ->get_total_count();
+?>
 <header class="topbar">
     <div class="topbar-left">
-        <button id="sidebar-toggle" class="btn-icon"><i class="fa-solid fa-bars"></i></button>
-        <div class="search-box">
-            <input type="text" placeholder="Search...">
-        </div>
+        <a href="index.php" class="topbar-logo" style="display: flex; align-items: center; text-decoration: none;">
+            
+            <span class="topbar-logo-text" style="font-size: 18px; font-weight: bold; color: #052822;">Admin Panel</span>
+        </a>
     </div>
     <div class="topbar-right" style="display: flex; align-items: center; gap: 15px; position: relative;">
         <!-- Notification Badge -->
@@ -13,10 +20,12 @@
         </div>
 
         <!-- Chat Badge -->
-        <div class="icon-badge" title="Messages" style="position: relative; cursor: pointer;">
+        <a href="message.php" class="icon-badge" title="Messages" style="position: relative; cursor: pointer; text-decoration: none; color: inherit;">
             <i class="fa-regular fa-comments"></i>
-            <span class="badge green">4</span>
-        </div>
+            <?php if ($total_messages > 0): ?>
+                <span class="badge green"><?= $total_messages; ?></span>
+            <?php endif; ?>
+        </a>
 
         <!-- Admin Profile Avatar Link -->
         <a href="profile.php" title="View Profile" style="display: flex; align-items: center;">

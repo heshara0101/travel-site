@@ -91,22 +91,22 @@ $destinations = [
 // Services Data (Matches create-service.php fields)
 $services = [
     [
-        'image' => 'assets/images/service1.jpg', // path to image
+        'image' => 'assets/images/service1.png', // path to image
         'title' => 'Custom Tour Itineraries',
         'short_desc' => 'Bespoke holiday plans designed specifically around your interests, timeline, and travel budget.'
     ],
     [
-        'image' => 'assets/images/service2.jpg',
+        'image' => 'assets/images/service2.png',
         'title' => 'Private Transport & Drivers',
         'short_desc' => 'Air-conditioned luxury vehicles equipped with licensed, English-speaking chauffeur guides.'
     ],
     [
-        'image' => 'assets/images/service3.jpg',
+        'image' => 'assets/images/service3.png',
         'title' => 'Boutique Hotel Reservations',
         'short_desc' => 'Exclusive rates and handpicked luxury resorts, eco-lodges, and heritage villas across the island.'
     ],
     [
-        'image' => 'assets/images/service4.jpg',
+        'image' => 'assets/images/service4.png',
         'title' => '24/7 Airport Transfers',
         'short_desc' => 'Punctual, stress-free pick-up and drop-off services from Colombo Bandaranaike International Airport.'
     ]
@@ -351,22 +351,22 @@ $services = [
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label class="form-label small fw-bold text-muted">Your Name</label>
-                                    <input type="text" name="name" class="form-control" placeholder="John Doe" required>
+                                    <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label small fw-bold text-muted">Email Address</label>
-                                    <input type="email" name="email" class="form-control" placeholder="john@example.com" required>
+                                    <input type="email" id="email" name="email" class="form-control" placeholder="john@example.com" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label small fw-bold text-muted">Subject</label>
-                                    <input type="text" name="subject" class="form-control" placeholder="Inquiry about Package" required>
+                                    <input type="text" id="subject" name="subject" class="form-control" placeholder="Inquiry about Package" required>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label small fw-bold text-muted">Your Message</label>
-                                    <textarea name="message" class="form-control" rows="4" placeholder="Tell us about your holiday plans..." required></textarea>
+                                    <textarea id="message" name="message" class="form-control" rows="4" placeholder="Tell us about your holiday plans..." required></textarea>
                                 </div>
                                 <div class="col-12 mt-4">
-                                    <button type="submit" class="btn btn-theme w-100 py-3 fw-bold">Submit Message</button>
+                                    <button type="submit" id="submit" class="btn btn-theme w-100 py-3 fw-bold">Submit Message</button>
                                 </div>
                             </div>
                         </form>
@@ -440,5 +440,84 @@ $services = [
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+    $(document).ready(function () {
+        $('#contactForm').on('submit', function (e) {
+            e.preventDefault();
+
+        var name = $.trim($("#name").val());
+        var email = $.trim($("#email").val());
+        var message = $("#message").val();
+            
+            // Check if title is empty
+        if (name === "") {
+            Swal.fire({
+                icon: "error",
+                title: "Validation Error",
+                text: "Please enter your name!",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return false;
+        }else if (email === "") {
+            Swal.fire({
+                icon: "error",
+                title: "Validation Error",
+                text: "Please enter your email!",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return false;
+        } else if (message === "") {
+            Swal.fire({
+                icon: "error",
+                title: "Validation Error",
+                text: "Please enter a message!",
+                timer: 2000,
+                showConfirmButton: false
+            });
+            return false;
+        }
+
+            var formData = new FormData(this);
+
+            $.ajax({
+                url: "admin-panel/assets/ajax/js/php/message-data.php",
+                type: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                dataType: "json",
+                success: function (response) {
+                    if (response.status === "success") {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Message Sent!",
+                            text: response.message,
+                            timer: 2500,
+                            showConfirmButton: false
+                        });
+                        $('#contactForm')[0].reset();
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Oops...",
+                            text: response.message
+                        });
+                    }
+                },
+                error: function () {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Server Error",
+                        text: "Something went wrong while processing your request."
+                    });
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html>
