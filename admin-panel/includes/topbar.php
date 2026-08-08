@@ -1,9 +1,14 @@
 <?php
 require_once "assets/classes/Database.php";
 require_once "assets/classes/message.php";
+require_once "assets/classes/booking.php";
 
 $MSG_COUNT_OBJ = new message();
 $total_messages = $MSG_COUNT_OBJ->get_total_count();
+
+$BOOKING_COUNT_OBJ = new booking();
+$stats = $BOOKING_COUNT_OBJ->getCount();
+$total_bookings = $stats['total'];
 ?>
 <header class="topbar">
     <div class="topbar-left">
@@ -27,9 +32,17 @@ $total_messages = $MSG_COUNT_OBJ->get_total_count();
             <?php endif; ?>
         </a>
 
+        <!-- Booking Badge -->
+        <a href="booking.php" class="icon-badge" title="Bookings" style="position: relative; cursor: pointer; text-decoration: none; color: inherit;">
+            <i class="fa-regular fa-calendar-check"></i>
+            <?php if ($total_bookings > 0): ?>
+                <span class="badge blue"><?= $total_bookings; ?></span>
+            <?php endif; ?>
+        </a>
+
         <!-- Admin Profile Avatar Link -->
         <a href="profile.php" title="View Profile" style="display: flex; align-items: center;">
-            <img src="assets/images/profile.png" alt="Admin Profile" class="topbar-avatar" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover; cursor: pointer;" onerror="this.src='https://via.placeholder.com/35?text=Admin'">
+            <img src="assets/images/placeholder.png" alt="Admin Profile" class="topbar-avatar" style="width: 35px; height: 35px; border-radius: 50%; object-fit: cover; cursor: pointer;" onerror="this.src='https://via.placeholder.com/35?text=Admin'">
         </a>
 
         <!-- Settings Icon with Dropdown Menu -->

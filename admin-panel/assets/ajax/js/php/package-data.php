@@ -38,14 +38,14 @@ $FORMDATA->web_desc = $web_desc;
 $FORMDATA->keywords = $keywords;
 $FORMDATA->full_description = $full_description;
 
-$res = $FORMDATA->package_create();
+try {
+    $FORMDATA->package_create();
 
-if ($res) {
     echo json_encode([
         "status"  => "success",
         "message" => "Package created successfully!"
     ]);
-} else {
+} catch (Throwable $e) {
     echo json_encode([
         "status"  => "error",
         "message" => "Database insert failed."

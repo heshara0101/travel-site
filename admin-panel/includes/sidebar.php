@@ -5,7 +5,7 @@
     </div>
 
     <div class="profile-section">
-        <img src="assets/images/profile.png" alt="Profile" class="profile-img">
+        <img src="assets/images/placeholder.png" alt="Profile" class="profile-img">
         <h4>Heshara</h4>
         <p>Administrator</p>
         <div class="profile-actions">
